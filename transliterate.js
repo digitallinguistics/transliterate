@@ -7,7 +7,32 @@ function getRandomCodePoint() {
   return String.fromCodePoint(Math.floor(Math.random() * 95) + 9632);
 }
 
-function transliterate(string = ``, substitutions) {
+/**
+ * An alias for the {@link transliterate} method
+ * @see transliterate
+ */
+function sanitize(string, substitutions) {
+  return transliterate(string, substitutions);
+}
+
+/**
+ * An alias for the {@link Transliterator} class
+ * @see Transliterator
+ */
+class Sanitizer {
+  constructor(substitutions) {
+    this.substitutions = substitutions;
+    return string => sanitize(string, substitutions);
+  }
+}
+
+/**
+ * Makes a series of substitutions on a string. Can be used to convert a string from one writing system to another (a process known as "transliteration") or to remove unwanted characters or sequences of characters from a string (a process known as "sanitization").
+ * @param  {String} [string=``]          The string to transliterate or sanitize.
+ * @param  {Object} [substitutions = {}] A hash of substitutions to make on the string. Each key in this object should be a string of characters you want to replace, and the value for that key should be the new string of characters to replace it with. For example, setting `"s": "z"` will replace all `s` characters with `z`. To sanitize a string, provide each unwanted character or sequence of characters as as a key, and set the value of that key to an empty string. For example, setting `"ts": ""` in this object will remove all sequences of `ts` from the string (but leave individual instances of `t` and `s` that do not appear in sequence).
+ * @return {String}                      Returns a new string with all substitutions made.
+ */
+function transliterate(string = ``, substitutions = {}) {
 
   // Type Checking
 
@@ -79,3 +104,28 @@ function transliterate(string = ``, substitutions) {
   return str;
 
 }
+
+/**
+ * A Transliterator class that saves a set of transliteration rules for repeated use.
+ * @prop {Object}   substitutions The set of substitution rules for this Transliterator. You can update the substitution rules used by this Transliterator at any time by modifying this object. See the {@link transliterate} method for documentation on how this substitutions object should be formatted.
+ */
+class Transliterator {
+  /**
+   * Create a new Transliterator
+   * @param {Object}    substitutions The set of substitution rules that this Transliterator should use. See the {@link transliterate} method for documentation on how this substitutions object should be formatted.
+   * @return {Function}               Returns a transliterate function that accepts a string and makes the substitutions provided in the `transliterate` argument.
+   */
+  constructor(substitutions) {
+    this.substitutions = substitutions;
+    return string => transliterate(string, this.substitutions);
+  }
+}
+
+// Exports
+
+export {
+  sanitize,
+  Sanitizer,
+  transliterate,
+  Transliterator,
+};
