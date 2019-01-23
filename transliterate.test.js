@@ -1,3 +1,5 @@
+const { transliterate } = require(`./transliterate.bundle`);
+
 describe(`transliterate`, () => {
 
   it(`accepts empty strings`);
