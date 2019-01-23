@@ -24,7 +24,9 @@
     "type": "git",
     "url": "git+https://github.com/digitallinguistics/transliterate.git"
   },
-  "scripts": null,
+  "scripts": {
+    "test": "jasmine --config=jasmine.json --experimental-modules"
+  },
   "config": {
     "access": "public"
   },
@@ -32,6 +34,7 @@
     "node": "10.x"
   },
   "devDependencies": {
-    "eslint": "^5.12.1"
+    "eslint": "^5.12.1",
+    "jasmine": "^3.3.1"
   }
 }
