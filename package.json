@@ -1,0 +1,37 @@
+{
+  "name": "@digitallinguistics/transliterate",
+  "version": "0.1.0",
+  "description": "A small JavaScript library for transliterating and/or sanitizing strings",
+  "keywords": [
+    "transliteration",
+    "Digital Linguistics",
+    "DLx",
+    "linguistics",
+    "digital humanities"
+  ],
+  "homepage": "https://github.com/digitallinguistics/transliterate",
+  "bugs": "https://github.com/digitallinguistics/transliterate/issues",
+  "license": "MIT",
+  "author": {
+    "name": "Daniel W. Hieber",
+    "url": "https://danielhieber.com",
+    "email": "dwhieb@gmail.com"
+  },
+  "main": "transliterate.bundle.js",
+  "browser": "transliterate.bundle.js",
+  "module": "transliterate.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/digitallinguistics/transliterate.git"
+  },
+  "scripts": null,
+  "config": {
+    "access": "public"
+  },
+  "engines": {
+    "node": "10.x"
+  },
+  "devDependencies": {
+    "eslint": "^5.12.1"
+  }
+}
