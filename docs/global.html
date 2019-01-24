@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
-	<title>Documentation Class: Sanitizer</title>
+	<title>Documentation Global</title>
 
 	<!--[if lt IE 9]>
 	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -72,16 +72,14 @@
 		<div id="main">
 			
 
-	<h1 class="page-title">Class: Sanitizer</h1>
+	<h1 class="page-title">Global</h1>
 <section>
 
 <header>
     
         <h2>
-        Sanitizer
-        </h2>
         
-            <div class="class-description"><p>An alias for the <a href="Transliterator.html">Transliterator</a> class</p></div>
+        </h2>
         
     
 </header>
@@ -91,14 +89,182 @@
     <div class="container-overview">
     
         
+
+        
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+        
+    
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        <dl>
+            
 <hr>
 <dt>
-    <h4 class="name" id="Sanitizer"><span class="type-signature"></span>new Sanitizer()</h4>
+    <h4 class="name" id="getRandomCodePoint"><span class="type-signature"></span>getRandomCodePoint()</h4>
     
     
 </dt>
 <dd>
 
+    
+    <div class="description">
+        <p>Gets a random code point from the Unicode geometric shapes block</p>
+    </div>
+    
+
+    
+
+    
+
+    
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    <p>Returns the random Unicode character</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">String</span>
+
+
+
+    </dd>
+</dl>
+
+
+        
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id="sanitize"><span class="type-signature"></span>sanitize()</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        <p>An alias for the <a href="global.html#transliterate">transliterate</a> method</p>
+    </div>
     
 
     
@@ -146,7 +312,7 @@
 	<dt class="tag-see method-doc-label method-doc-details-label">See:</dt>
 	<dd class="tag-see">
 		<ul>
-			<li><a href="Transliterator.html">Transliterator</a></li>
+			<li><a href="global.html#transliterate">transliterate</a></li>
 			</ul>
 	</dd>
 	
@@ -170,8 +336,178 @@
     
 </dd>
 
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id="transliterate"><span class="type-signature"></span>transliterate( [string] [, substitutions])</h4>
     
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        <p>Makes a series of substitutions on a string. Can be used to convert a string from one writing system to another (a process known as &quot;transliteration&quot;) or to remove unwanted characters or sequences of characters from a string (a process known as &quot;sanitization&quot;).</p>
     </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Argument</th>
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>string</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    ``
+                
+                </td>
+            
+
+            <td class="description last"><p>The string to transliterate or sanitize.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>substitutions</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    {}
+                
+                </td>
+            
+
+            <td class="description last"><p>A hash of substitutions to make on the string. Each key in this object should be a string of characters you want to replace, and the value for that key should be the new string of characters to replace it with. For example, setting <code>&quot;s&quot;: &quot;z&quot;</code> will replace all <code>s</code> characters with <code>z</code>. To sanitize a string, provide each unwanted character or sequence of characters as as a key, and set the value of that key to an empty string. For example, setting <code>&quot;ts&quot;: &quot;&quot;</code> in this object will remove all sequences of <code>ts</code> from the string (but leave individual instances of <code>t</code> and <code>s</code> that do not appear in sequence).</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
 
     
 
@@ -184,7 +520,35 @@
     
 
     
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    <p>Returns a new string with all substitutions made.</p>
+</div>
 
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">String</span>
+
+
+
+    </dd>
+</dl>
+
+
+        
+
+    
+</dd>
+
+        </dl>
     
 
     
@@ -234,7 +598,7 @@
 <span class="jsdoc-message">
 	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a>
 	
-		on 2019-01-23T21:25:48-06:00
+		on 2019-01-23T21:30:42-06:00
 	
 	using the <a href="https://github.com/docstrap/docstrap">DocStrap template</a>.
 </span>
