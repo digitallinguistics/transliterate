@@ -1,5 +1,6 @@
 /**
  * Gets a random code point from the Unicode geometric shapes block
+ * @private
  * @return {String} Returns the random Unicode character
  */
 function getRandomCodePoint() {
@@ -31,6 +32,15 @@ class Sanitizer {
  * @param  {String} [string=``]          The string to transliterate or sanitize.
  * @param  {Object} [substitutions = {}] A hash of substitutions to make on the string. Each key in this object should be a string of characters you want to replace, and the value for that key should be the new string of characters to replace it with. For example, setting `"s": "z"` will replace all `s` characters with `z`. To sanitize a string, provide each unwanted character or sequence of characters as as a key, and set the value of that key to an empty string. For example, setting `"ts": ""` in this object will remove all sequences of `ts` from the string (but leave individual instances of `t` and `s` that do not appear in sequence).
  * @return {String}                      Returns a new string with all substitutions made.
+ * @example {@lang javascript}
+ * const substitutions = {
+ *   tʼ: `d`,
+ *   ts: `c`,
+ * };
+ *
+ * const input  = `tsatʼ`;
+ * const output = transliterate(input, substitutions);
+ * console.log(output); // --> "cad"
  */
 function transliterate(string = ``, substitutions = {}) {
 
@@ -108,6 +118,16 @@ function transliterate(string = ``, substitutions = {}) {
 /**
  * A Transliterator class that saves a set of transliteration rules for repeated use.
  * @prop {Object}   substitutions The set of substitution rules for this Transliterator. You can update the substitution rules used by this Transliterator at any time by modifying this object. See the {@link transliterate} method for documentation on how this substitutions object should be formatted.
+ * @example {@lang javascript}
+ * const substitutions = {
+ *   tʼ: `d`,
+ *   ts: `c`,
+ * };
+ *
+ * const transliterate = new Transliterator(substitutions);
+ * const input         = `tsatʼ`;
+ * const output        = transliterate(input);
+ * console.log(output); // --> "cad"
  */
 class Transliterator {
   /**
