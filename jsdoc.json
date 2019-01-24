@@ -1,0 +1,18 @@
+{
+  "opts": {
+    "destination": "./docs/",
+    "package": "./package.json",
+    "readme": "./README.md",
+    "recurse": true,
+    "template": "./node_modules/ink-docstrap/template"
+  },
+  "plugins": [
+    "plugins/markdown"
+  ],
+  "source": {
+    "include": ["transliterate.js"]
+  },
+  "templates": {
+    "theme": "cosmo"
+  }
+}
