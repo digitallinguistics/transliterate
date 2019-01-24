@@ -25,7 +25,8 @@
     "url": "git+https://github.com/digitallinguistics/transliterate.git"
   },
   "scripts": {
-    "build": "webpack",
+    "build": "npm run bundle && npm run docs",
+    "bundle": "webpack",
     "docs": "jsdoc -c jsdoc.json",
     "pretest": "npm run build",
     "test": "jasmine --config=jasmine.json"
