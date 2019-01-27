@@ -1,5 +1,5 @@
 // eslint-disable-next-line global-require
-if (!process.env.AZURE_STORAGE_CONNECTION_STRING) require(`./credentials`);
+if (!process.env.AZURE_STORAGE_ACCESS_KEY) require(`./credentials`);
 
 const azure         = require(`azure-storage`);
 const { version }   = require(`../package.json`);
