@@ -32,7 +32,7 @@
     "test": "jasmine --config=jasmine.json",
     "upload": "node build/upload.js"
   },
-  "config": {
+  "publishConfig": {
     "access": "public"
   },
   "engines": {
