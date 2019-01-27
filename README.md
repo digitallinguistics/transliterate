@@ -9,6 +9,7 @@ A small JavaScript library for transliterating and/or sanitizing strings. Works 
 [![GitHub issues](https://img.shields.io/github/issues-raw/digitallinguistics/transliterate.svg)][6]
 [![license](https://img.shields.io/npm/l/@digitallinguistics/transliterate.svg)][7]
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.2550470.svg)][12]
 [![GitHub stars](https://img.shields.io/github/stars/digitallinguistics/transliterate.svg?label=Stars&style=social)][1]
 [![GitHub forks](https://img.shields.io/github/forks/digitallinguistics/transliterate.svg?label=Fork&style=social)][1]
 
@@ -23,6 +24,10 @@ Check out the [Transliterator tool][4] to see this library in use.
 ## Issues & Feature Requests
 
 [Click here to open an issue or make a feature request.][6]
+
+## Citation & Attribution
+
+This library is maintained by [Daniel W. Hieber][11]. To cite this library, please see the citation information on this repository's [Zenodo page][12].
 
 ## Installation
 
@@ -133,3 +138,5 @@ console.log(output); // --> "badag"
 [8]: https://developer.digitallinguistics.io/transliterate
 [9]: https://github.com/digitallinguistics/transliterate/blob/master/.github/CONTRIBUTING.md
 [10]: https://nodejs.org/en/
+[11]: https://danielhieber.com
+[12]: https://doi.org/10.5281/zenodo.2550470
