@@ -1,10 +1,10 @@
+require(`./credentials`);
 const azure         = require(`azure-storage`);
-const credentials   = require(`./credentials`);
 const { version }   = require(`../package.json`);
 const path          = require(`path`);
 const { promisify } = require(`util`);
 
-const storage    = azure.createBlobService(credentials);
+const storage    = azure.createBlobService();
 const uploadFile = promisify(storage.createBlockBlobFromLocalFile).bind(storage);
 
 void async function upload() {

@@ -18,8 +18,8 @@ Once a pull request is reviewed and merged, follow these release steps:
 
 1. Increment the project's version number (`npm version major|minor|patch`) on the `master` branch, with no commit message
 
-1. Upload the library to the DLx CDN: `npm run upload`
-
 1. Create a GitHub release, tagging the `master` branch and adding release notes
+
+1. Library is automatically uploaded to the DLx CDN
 
 1. Library is automatically deployed to npm

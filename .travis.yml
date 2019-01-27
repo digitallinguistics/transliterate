@@ -1,4 +1,11 @@
-language: node_js
-node_js: lts/*
+before_deploy: 'node build/upload.js'
+deploy:
+  api_key:  $NPM_KEY
+  email:    dwhieb@gmail.com
+  provider: npm
+  on:
+    tags:   true
+language:   node_js
+node_js:    lts/*
 notifications:
   email: false
