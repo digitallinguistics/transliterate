@@ -10,7 +10,7 @@ This project follows a simple branching model:
 
 * Each issue branch is tested thoroughly and must be production-ready before being merged
 
-* Issue branches are merged directly into the `master` branch
+* Issue branches are merged directly into the `master` branch, with a label and issue number in the commit
 
 ## Release Process
 
