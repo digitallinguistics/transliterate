@@ -12,6 +12,14 @@ This project follows a simple branching model:
 
 * Issue branches are merged directly into the `master` branch
 
-* The project's version number increments each time an issue branch is merged
+## Release Process
 
-* When an issue branch is merged, the `master` branch is tagged for a release and GitHub release notes made, and the code published to npm
+Once a pull request is reviewed and merged, follow these release steps:
+
+1. Increment the project's version number (`npm version major|minor|patch`) on the `master` branch, with no commit message
+
+1. Upload the library to the DLx CDN: `npm run upload`
+
+1. Create a GitHub release, tagging the `master` branch and adding release notes
+
+1. Library is automatically deployed to npm

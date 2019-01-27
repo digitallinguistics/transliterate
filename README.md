@@ -112,15 +112,7 @@ console.log(output); // --> "badag"
 
 ## Contributing
 
-Thanks for contributing to the DLx `transliterate` project! Pull requests for improvements to this library are welcome. Please start by [opening an issue][6] or making sure an issue for the change already exists.
-
-To install the project and its dependencies, first make sure you have the latest LTS release of Node.js installed. Then using the command line, navigate to the project folder, and run `npm install`.
-
-The source code for this project is located in the `transliterate.js` file. An ESLint stylesheet can also be found in the project root. Please check that your code adheres to the ESLint stylesheet (or that exceptions are documented in your code using `eslint-ignore`) before submitting your pull request.
-
-Once you have made your changes, rebuild the project by running `npm run build` from the command line. This will bundle the source code into `transliterate.bundle.js` for use as a library, and generate the documentation for the library.
-
-Tests are run using [Jasmine][9], and can be run from the command line using `npm test`. Be sure to update and run the tests (located in `transliterate.test.js`) as needed before submitting your pull request.
+[Check out the Contributing Guide][9]
 
 [1]: https://github.com/digitallinguistics/transliterate
 [2]: https://en.wikipedia.org/wiki/Bleeding_order
@@ -130,5 +122,5 @@ Tests are run using [Jasmine][9], and can be run from the command line using `np
 [6]: https://github.com/digitallinguistics/transliterate/issues
 [7]: https://github.com/digitallinguistics/transliterate/blob/master/LICENSE.md
 [8]: https://developer.digitallinguistics.io/transliterate
-[9]: https://jasmine.github.io/
+[9]: https://github.com/digitallinguistics/transliterate/blob/master/.github/CONTRIBUTING.md
 [10]: https://nodejs.org/en/
