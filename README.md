@@ -33,6 +33,15 @@ npm install @digitallinguistics/transliterate # npm
 yarn add @digitallinguistics/transliterate    # yarn
 ```
 
+Or link to the library using the DLx CDN. The library is available, versioned or unversioned, as ES modules or a UMD library, at the following URLs (where `X.X.X` represents the version number):
+
+- `https://cdn.digitallinguistics.io/scripts/transliterate.js` (latest, ES modules)
+- `https://cdn.digitallinguistics.io/scripts/transliterate-latest.js` (latest, ES modules)
+- `https://cdn.digitallinguistics.io/scripts/transliterate-X.X.X.js` (versioned, ES modules)
+- `https://cdn.digitallinguistics.io/scripts/transliterate.bundle.js` (latest, UMD)
+- `https://cdn.digitallinguistics.io/scripts/transliterate.bundle-latest.js` (latest, UMD)
+- `https://cdn.digitallinguistics.io/scripts/transliterate.bundle-X.X.X.js` (versioned, UMD)
+
 ## Importing the Library
 
 In the browser, include the library in your HTML (adjust the `src` to point to the location of the `transliterate.js` file in your project):
