@@ -64,6 +64,19 @@ describe(`transliterate`, () => {
 
   });
 
+  it(`retains line breaks`, () => {
+
+    const substitutions = {};
+
+    const input = `Hello world,
+    This is some multi-line input.\nThis is also multi-line.`;
+
+    const output = transliterate(input, substitutions);
+
+    expect(output).toEqual(input);
+
+  });
+
   it(`transliterates Chatino`, () => {
 
     const substitutions = {
