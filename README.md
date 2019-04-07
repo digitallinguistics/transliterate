@@ -1,6 +1,6 @@
 # [Transliterate][1]
 
-A small JavaScript library for transliterating and/or sanitizing strings. Works on Node (LTS) or in the browser.
+A small JavaScript library for transliterating and/or sanitizing strings. Works on Node (LTS) or in the browser. Tested against a wide variety of edge cases and unusual inputs.
 
 [View the complete documentation for this library here.][8]
 
