@@ -1,6 +1,6 @@
 {
   "name": "@digitallinguistics/transliterate",
-  "version": "0.1.10",
+  "version": "0.2.0",
   "description": "A small JavaScript library for transliterating and/or sanitizing strings",
   "keywords": [
     "transliteration",
