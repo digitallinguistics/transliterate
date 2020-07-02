@@ -4,6 +4,7 @@ A small JavaScript library for transliterating and/or sanitizing strings. Tested
 
 [![npm](https://img.shields.io/npm/dt/@digitallinguistics/transliterate)][npm]
 [![GitHub issues](https://img.shields.io/github/issues/digitallinguistics/transliterate)][issues]
+[![GitHub status](https://github.com/digitallinguistics/transliterate/workflows/release/badge.svg)][status]
 [![DOI](https://zenodo.org/badge/167235084.svg)][Zenodo]
 [![GitHub license](https://img.shields.io/github/license/digitallinguistics/transliterate)][license]
 [![GitHub stars](https://img.shields.io/github/stars/digitallinguistics/transliterate?style=social)][stargazers]
@@ -122,5 +123,6 @@ console.log(output); // --> "badag"
 [me]:             https://danielhieber.com
 [npm]:            https://www.npmjs.com/package/@digitallinguistics/transliterate
 [stargazers]:     https://github.com/digitallinguistics/transliterate/stargazers
+[status]:         https://github.com/digitallinguistics/transliterate/actions
 [Transliterator]: https://tools.digitallinguistics.io/transliterator
 [Zenodo]:         https://doi.org/10.5281/zenodo.2550468
