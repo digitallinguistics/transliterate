@@ -1,18 +1,18 @@
-# [Transliterate][1]
+# Transliterate
 
 A small JavaScript library for transliterating and/or sanitizing strings. Tested against a variety of edge cases and unusual inputs.
 
-* [View the complete documentation for this library here.][docs]
-* [View this library on GitHub][GitHub]
+[![npm](https://img.shields.io/npm/dt/@digitallinguistics/transliterate)][npm]
+[![GitHub issues](https://img.shields.io/github/issues/digitallinguistics/transliterate)][issues]
+[![DOI](https://zenodo.org/badge/167235084.svg)][Zenodo]
+[![GitHub license](https://img.shields.io/github/license/digitallinguistics/transliterate)][license]
+[![GitHub stars](https://img.shields.io/github/stars/digitallinguistics/transliterate?style=social)][stargazers]
 
-<!-- GitHub Actions build status -->
-<!-- GitHub version -->
-<!-- npm / GitHub downloads -->
-<!-- used in other packages? -->
-<!-- GitHub issues -->
-<!-- GitHub license -->
-<!-- Zenodo DOI -->
-<!-- GitHub stars -->
+## Quick Links
+
+* [View the complete documentation for this library here.][docs]
+* [View this library on GitHub.][GitHub]
+* [Click here to open an issue or make a feature request.][new-issue]
 
 ## Overview
 
@@ -21,10 +21,6 @@ This library is useful for linguists and data analysts working with language dat
 ## Demo
 
 Check out the [Transliterator tool][Transliterator] to see this library in use.
-
-## Issues & Feature Requests
-
-[Click here to open an issue or make a feature request.][new-issue]
 
 ## Citation & Attribution
 
@@ -120,8 +116,11 @@ console.log(output); // --> "badag"
 [docs]:           https://developer.digitallinguistics.io/transliterate
 [feeding]:        https://en.wikipedia.org/wiki/Feeding_order
 [GitHub]:         https://github.com/digitallinguistics/transliterate
+[issues]:         https://github.com/digitallinguistics/transliterate/issues
+[license]:        https://github.com/digitallinguistics/transliterate/blob/master/LICENSE.md
 [new-issue]:      https://github.com/digitallinguistics/transliterate/issues/new
 [me]:             https://danielhieber.com
 [npm]:            https://www.npmjs.com/package/@digitallinguistics/transliterate
+[stargazers]:     https://github.com/digitallinguistics/transliterate/stargazers
 [Transliterator]: https://tools.digitallinguistics.io/transliterator
 [Zenodo]:         https://doi.org/10.5281/zenodo.2550468
