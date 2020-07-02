@@ -1,22 +1,22 @@
-# ESLint v5.9.0
+# ESLint v7.3.1
 parserOptions:
-  ecmaVersion: 10
+  ecmaVersion: 11
   ecmaFeatures:
     impliedStrict: true
   sourceType: module
 env:
-  browser: true
+  browser: false
   es6:     true
-  jasmine: true
-  node:    true
+  jasmine: false
+  node:    false
 rules:
   id-blacklist:
+  - error
+  no-restricted-exports:
   - error
   no-restricted-globals:
   - error
   no-restricted-imports:
-  - error
-  no-restricted-modules:
   - error
   no-restricted-syntax:
   - error
@@ -48,7 +48,6 @@ rules:
   - warn
   - 1tbs
   - allowSingleLine: true
-  callback-return: warn
   camelcase:
   - warn
   - properties: always
@@ -76,6 +75,8 @@ rules:
   - multi-line
   - consistent
   default-case: error
+  default-case-last: error
+  default-param-last: error
   dot-location:
   - error
   - property
@@ -98,6 +99,8 @@ rules:
   - as-needed
   func-style:
   - off
+  function-call-argument-newline:
+  - off
   function-paren-newline:
   - error
   - multiline
@@ -108,9 +111,10 @@ rules:
   getter-return:
   - error
   - allowImplicit: true
-  global-require: warn
+  grouped-accessor-pairs:
+  - warn
+  - getBeforeSet
   guard-for-in: warn
-  handle-callback-err: error
   id-length: 'off'
   id-match: 'off'
   implicit-arrow-linebreak:
@@ -126,9 +130,9 @@ rules:
   key-spacing:
   - error
   - beforeColon: false
-    afterColon: true
-    mode: minimum
-    align: value
+    afterColon:  true
+    mode:        minimum
+    align:       value
   keyword-spacing:
   - error
   - before: true
@@ -193,7 +197,6 @@ rules:
   no-async-promise-executor: error
   no-await-in-loop: error
   no-bitwise: warn
-  no-buffer-constructor: error
   no-caller: error
   no-case-declarations: error
   no-catch-shadow: error
@@ -219,11 +222,13 @@ rules:
   - checkLoops: true
   no-continue: warn
   no-control-regex: warn
+  no-constructor-return: warn
   no-delete-var: error
   no-div-regex: off
   no-debugger: error
   no-dupe-args: error
   no-dupe-class-members: error
+  no-dupe-else-if: error
   no-dupe-keys: error
   no-duplicate-case: error
   no-duplicate-imports:
@@ -258,6 +263,7 @@ rules:
   no-implicit-coercion: warn
   no-implicit-globals: error
   no-implied-eval: error
+  no-import-assign: error
   no-inline-comments: 'off'
   no-inner-declarations:
   - error
@@ -276,6 +282,7 @@ rules:
   no-lone-blocks: error
   no-lonely-if: warn
   no-loop-func: error
+  no-loss-of-precision: error
   no-magic-numbers:
   - warn
   - ignoreArrayIndexes: true
@@ -314,9 +321,6 @@ rules:
   no-mixed-operators:
   - warn
   - allowSamePrecedence: true
-  no-mixed-requires:
-  - error
-  - allowCall: true
   no-mixed-spaces-and-tabs: error
   no-multi-assign: warn
   no-multi-spaces:
@@ -324,9 +328,11 @@ rules:
   - ignoreEOLComments: true
     exceptions:
       AssignmentExpression: true
+      AssignmentPattern: true
       IfStatement: true
       ImportDeclaration: true
       ImportSpecifier: true
+      VariableDeclaration: true
       VariableDeclarator: true
   no-multi-str: error
   no-multiple-empty-lines:
@@ -337,7 +343,6 @@ rules:
   no-new: warn
   no-new-func: error
   no-new-object: warn
-  no-new-require: error
   no-new-symbol: error
   no-new-wrappers: warn
   no-obj-calls: error
@@ -346,10 +351,8 @@ rules:
   no-param-reassign:
   - error
   - props: true
-  no-path-concat: error
   no-plusplus: 'off'
-  no-process-env: 'off'
-  no-process-exit: error
+  no-promise-executor-return: warn
   no-proto: error
   no-prototype-builtins: 'off'
   no-redeclare: error
@@ -362,6 +365,7 @@ rules:
   no-self-assign: error
   no-self-compare: error
   no-sequences: error
+  no-setter-return: error
   no-shadow:
   - warn
   - builtinGlobals: true
@@ -390,6 +394,7 @@ rules:
   no-underscore-dangle:
   - warn
   - allow:
+    - __dirname
     - _ts
     - _etag
   no-unexpected-multiline: error
@@ -398,6 +403,7 @@ rules:
   - error
   - defaultAssignment: false
   no-unreachable: error
+  no-unreachable-loop: error
   no-unsafe-finally: warn
   no-unsafe-negation: error
   no-unused-expressions: error
@@ -407,7 +413,9 @@ rules:
     - warn
     - classes: false
       functions: false
+  no-useless-backreference: error
   no-useless-call: error
+  no-useless-catch: error
   no-useless-concat: error
   no-useless-computed-key: error
   no-useless-constructor: error
@@ -468,8 +476,11 @@ rules:
   - array: false
     object: true
   - enforceForRenamedProperties: false
+  prefer-exponentiation-operator: error
+  prefer-named-capture-group: warn
   prefer-numeric-literals: warn
   prefer-object-spread: off
+  prefer-regex-literals: off
   prefer-promise-reject-errors:
   - warn
   - allowEmptyReject: true
