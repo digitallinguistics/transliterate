@@ -8,6 +8,7 @@ env:
   browser: false
   es6:     true
   jasmine: false
+  mocha:   true
   node:    false
 rules:
   id-blacklist:
