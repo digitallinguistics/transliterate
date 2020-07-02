@@ -1,6 +1,6 @@
 # [Transliterate][1]
 
-A small JavaScript library for transliterating and/or sanitizing strings. Works on Node (LTS) or in the browser. Tested against a wide variety of edge cases and unusual inputs.
+A small JavaScript library for transliterating and/or sanitizing strings. Tested against a variety of edge cases and unusual inputs.
 
 [View the complete documentation for this library here.][8]
 
@@ -15,7 +15,7 @@ A small JavaScript library for transliterating and/or sanitizing strings. Works 
 
 ## Overview
 
-This library is useful for linguists and data analysts working with language data. It can be used to convert a string from one writing system to another (a process known as "transliteration"), or to remove unwanted characters or sequences of characters from a string (a process known as "sanitization"). This library handles common problems that arise during transliteration and sanitization, including [bleeding][2] and [feeding][3] issues.
+This library is useful for linguists and data analysts working with language data. It can be used to convert a string from one writing system to another (a process known as <dfn>transliteration</dfn>), or to remove unwanted characters or sequences of characters from a string (a process known as <dfn>sanitization</dfn>). This library handles common problems that arise during transliteration and sanitization, including [bleeding][2] and [feeding][3] issues.
 
 ## Demo
 
@@ -38,31 +38,18 @@ npm install @digitallinguistics/transliterate # npm
 yarn add @digitallinguistics/transliterate    # yarn
 ```
 
-Or link to the library using the DLx CDN. The library is available, versioned or unversioned, as ES modules or a UMD library, at the following URLs (where `X.X.X` represents the version number):
-
-- `https://cdn.digitallinguistics.io/scripts/transliterate.js` (latest, ES modules)
-- `https://cdn.digitallinguistics.io/scripts/transliterate-latest.js` (latest, ES modules)
-- `https://cdn.digitallinguistics.io/scripts/transliterate-X.X.X.js` (versioned, ES modules)
-- `https://cdn.digitallinguistics.io/scripts/transliterate.bundle.js` (latest, UMD)
-- `https://cdn.digitallinguistics.io/scripts/transliterate.bundle-latest.js` (latest, UMD)
-- `https://cdn.digitallinguistics.io/scripts/transliterate.bundle-X.X.X.js` (versioned, UMD)
-
 ## Importing the Library
 
 In the browser, include the library in your HTML (adjust the `src` to point to the location of the `transliterate.js` file in your project):
 
 ```html
-<!-- Using ES6 modules -->
 <script src=transliterate.js type=module></script>
-
-<!-- As a global variable -->
-<script src=transliterate.bundle.js></script>
 ```
 
 In Node, simply require the library:
 
 ```js
-const { transliterate } = require(`@digitallinguistics/transliterate`);
+import { transliterate } from '@digitallinguistics/transliterate';
 ```
 
 ## Basic Usage
@@ -80,7 +67,7 @@ To transliterate a string, use the `transliterate` method:
 
 ```js
 // Import just the "transliterate" method from the library
-const { transliterate } = transliterate;
+import { transliterate } from '@digitallinguistics/transliterate';
 
 // The list of substitutions to make
 const substitutions = {
@@ -102,7 +89,7 @@ To save a set of transliteration rules for reuse on more than one string, use th
 
 ```js
 // Import just the Transliterator class
-const { Transliterator } = transliterate;
+import { Transliterator } from '@digitallinguistics/transliterate';
 
 // The list of substitutions to use for transliteration
 const substitutions = {
