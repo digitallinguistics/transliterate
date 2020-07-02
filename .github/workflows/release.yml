@@ -20,7 +20,7 @@ jobs:
           node-version: 14.x
           registry-url: https://registry.npmjs.org/
 
-      - name: install packages
+      - name: install dependencies
         run:  npm ci
 
       - name: run tests
