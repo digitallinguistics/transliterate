@@ -2,32 +2,37 @@
 
 A small JavaScript library for transliterating and/or sanitizing strings. Tested against a variety of edge cases and unusual inputs.
 
-[View the complete documentation for this library here.][8]
+* [View the complete documentation for this library here.][docs]
+* [View this library on GitHub][GitHub]
 
-[![npm version](https://img.shields.io/npm/v/@digitallinguistics/transliterate.svg)][5]
-[![npm downloads](https://img.shields.io/npm/dt/@digitallinguistics/transliterate.svg)][5]
-[![GitHub issues](https://img.shields.io/github/issues-raw/digitallinguistics/transliterate.svg)][6]
-[![license](https://img.shields.io/npm/l/@digitallinguistics/transliterate.svg)][7]
-
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.2550470.svg)][12]
-[![GitHub stars](https://img.shields.io/github/stars/digitallinguistics/transliterate.svg?label=Stars&style=social)][1]
-[![GitHub forks](https://img.shields.io/github/forks/digitallinguistics/transliterate.svg?label=Fork&style=social)][1]
+<!-- GitHub Actions build status -->
+<!-- GitHub version -->
+<!-- npm / GitHub downloads -->
+<!-- used in other packages? -->
+<!-- GitHub issues -->
+<!-- GitHub license -->
+<!-- Zenodo DOI -->
+<!-- GitHub stars -->
 
 ## Overview
 
-This library is useful for linguists and data analysts working with language data. It can be used to convert a string from one writing system to another (a process known as <dfn>transliteration</dfn>), or to remove unwanted characters or sequences of characters from a string (a process known as <dfn>sanitization</dfn>). This library handles common problems that arise during transliteration and sanitization, including [bleeding][2] and [feeding][3] issues.
+This library is useful for linguists and data analysts working with language data. It can be used to convert a string from one writing system to another (a process known as <dfn>transliteration</dfn>), or to remove unwanted characters or sequences of characters from a string (a process known as <dfn>sanitization</dfn>). This library handles common problems that arise during transliteration and sanitization, including [bleeding][bleeding] and [feeding][feeding] issues.
 
 ## Demo
 
-Check out the [Transliterator tool][4] to see this library in use.
+Check out the [Transliterator tool][Transliterator] to see this library in use.
 
 ## Issues & Feature Requests
 
-[Click here to open an issue or make a feature request.][6]
+[Click here to open an issue or make a feature request.][new-issue]
 
 ## Citation & Attribution
 
-This library is maintained by [Daniel W. Hieber][11]. To cite this library, please see the citation information on this repository's [Zenodo page][12].
+This library is maintained by [Daniel W. Hieber][me]. You can cite this library with its DOI using the following model:
+
+> Hieber, Daniel W. 2020. digitallinguistics/transliterate. doi:[10.5281/zenodo.2550468](https://doi.org/10.5281/zenodo.2550468).
+
+Each version of this library is archived on this project's [Zenodo page][Zenodo].
 
 ## Installation
 
@@ -46,7 +51,7 @@ In the browser, include the library in your HTML (adjust the `src` to point to t
 <script src=transliterate.js type=module></script>
 ```
 
-In Node, simply require the library:
+In Node, simply import the library:
 
 ```js
 import { transliterate } from '@digitallinguistics/transliterate';
@@ -66,7 +71,7 @@ The `sanitize` and `Sanitizer` exports are essentially just aliases for `transli
 To transliterate a string, use the `transliterate` method:
 
 ```js
-// Import just the "transliterate" method from the library
+// Import the "transliterate" method from the library
 import { transliterate } from '@digitallinguistics/transliterate';
 
 // The list of substitutions to make
@@ -88,7 +93,7 @@ console.log(output); // --> "badag"
 To save a set of transliteration rules for reuse on more than one string, use the `Transliterator` class:
 
 ```js
-// Import just the Transliterator class
+// Import the Transliterator class
 import { Transliterator } from '@digitallinguistics/transliterate';
 
 // The list of substitutions to use for transliteration
@@ -111,19 +116,12 @@ const output = transliterate(input);
 console.log(output); // --> "badag"
 ```
 
-## Contributing
-
-[Check out the Contributing Guide][9]
-
-[1]: https://github.com/digitallinguistics/transliterate
-[2]: https://en.wikipedia.org/wiki/Bleeding_order
-[3]: https://en.wikipedia.org/wiki/Feeding_order
-[4]: https://tools.digitallinguistics.io/transliterator
-[5]: https://www.npmjs.com/package/@digitallinguistics/transliterate
-[6]: https://github.com/digitallinguistics/transliterate/issues
-[7]: https://github.com/digitallinguistics/transliterate/blob/master/LICENSE.md
-[8]: https://developer.digitallinguistics.io/transliterate
-[9]: https://github.com/digitallinguistics/transliterate/blob/master/.github/CONTRIBUTING.md
-[10]: https://nodejs.org/en/
-[11]: https://danielhieber.com
-[12]: https://doi.org/10.5281/zenodo.2550470
+[bleeding]:       https://en.wikipedia.org/wiki/Bleeding_order
+[docs]:           https://developer.digitallinguistics.io/transliterate
+[feeding]:        https://en.wikipedia.org/wiki/Feeding_order
+[GitHub]:         https://github.com/digitallinguistics/transliterate
+[new-issue]:      https://github.com/digitallinguistics/transliterate/issues/new
+[me]:             https://danielhieber.com
+[npm]:            https://www.npmjs.com/package/@digitallinguistics/transliterate
+[Transliterator]: https://tools.digitallinguistics.io/transliterator
+[Zenodo]:         https://doi.org/10.5281/zenodo.2550468
