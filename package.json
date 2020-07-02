@@ -30,7 +30,7 @@
     "access": "public"
   },
   "engines": {
-    "node": "10.x"
+    "node": "14.x"
   },
   "devDependencies": {
     "eslint": "^5.12.1",
