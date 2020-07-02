@@ -1,11 +1,16 @@
+/* eslint-disable
+  no-constructor-return,
+*/
+
 /**
  * Gets a random code point from the Unicode geometric shapes block
  * @private
  * @return {String} Returns the random Unicode character
  */
 function getRandomCodePoint() {
-  // eslint-disable-next-line no-magic-numbers
-  return String.fromCodePoint(Math.floor(Math.random() * 95) + 9632);
+  const blockBegin  = 9632;
+  const blockLength = 95;
+  return String.fromCodePoint(Math.floor(Math.random() * blockLength) + blockBegin);
 }
 
 /**

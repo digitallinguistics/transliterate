@@ -1,19 +1,29 @@
-/* eslint-disable max-nested-callbacks */
+/* eslint-disable
+  func-names,
+  max-nested-callbacks,
+  prefer-arrow-callback,
+*/
 
-const { transliterate } = require(`./transliterate.bundle`);
+import { createRequire } from 'module';
+import expect            from 'expect.js';
+import { transliterate } from './transliterate.js';
 
-describe(`transliterate`, () => {
+const require              = createRequire(import.meta.url);
+const blns                 = require(`./constants/blns.json`);
+const chatinoSubstitutions = require(`./constants/chatino.json`);
 
-  it(`accepts empty strings`, () => {
+describe(`transliterate`, function() {
+
+  it(`accepts empty strings`, function() {
 
     const substitutions = { t: `d` };
     const output = transliterate(``, substitutions);
 
-    expect(output).toBe(``);
+    expect(output).to.be.empty();
 
   });
 
-  it(`handles bleeding problems`, () => {
+  it(`handles bleeding problems`, function() {
 
     const substitutions = {
       s:  `z`,
@@ -24,11 +34,11 @@ describe(`transliterate`, () => {
     const correctOutput = `aca`;
     const actualOutput  = transliterate(input, substitutions);
 
-    expect(actualOutput).toBe(correctOutput);
+    expect(actualOutput).to.be(correctOutput);
 
   });
 
-  it(`handles feeding problems`, () => {
+  it(`handles feeding problems`, function() {
 
     const substitutions = {
       d: `θ`,
@@ -39,19 +49,16 @@ describe(`transliterate`, () => {
     const correctOutput = `adaθa`;
     const actualOutput  = transliterate(input, substitutions);
 
-    expect(actualOutput).toBe(correctOutput);
+    expect(actualOutput).to.be(correctOutput);
 
   });
 
-  it(`handles naughty strings`, () => {
+  it(`handles naughty strings`, function() {
 
     const substitutions = { ʃ: `s` };
 
-    // eslint-disable-next-line global-require
-    const blns = require(`./constants/blns.json`);
-
     blns.forEach(str => {
-      expect(transliterate(str, substitutions)).toBe(str);
+      expect(transliterate(str, substitutions)).to.be(str);
     });
 
   });
@@ -75,7 +82,7 @@ describe(`transliterate`, () => {
     const correctOutput = `abcdefghij`;
     const actualOutput  = transliterate(input, substitutions);
 
-    expect(actualOutput).toBe(correctOutput);
+    expect(actualOutput).to.be(correctOutput);
 
   });
 
@@ -88,20 +95,17 @@ describe(`transliterate`, () => {
 
     const output = transliterate(input, substitutions);
 
-    expect(output).toEqual(input);
+    expect(output).to.equal(input);
 
   });
 
   it(`transliterates Chatino`, () => {
 
-    // eslint-disable-next-line global-require
-    const substitutions = require(`./constants/chatino.json`);
-
     const input         = `ji_& xiku_na!7a laa7 nka7nelo!7o_ na! nkata_a!`;
     const correctOutput = `jï̱ xiku̱ná'a laa' nka'neló'o̱ ná nkata̱á`;
-    const actualOutput  = transliterate(input, substitutions);
+    const actualOutput  = transliterate(input, chatinoSubstitutions);
 
-    expect(actualOutput).toBe(correctOutput);
+    expect(actualOutput).to.be(correctOutput);
 
   });
 
