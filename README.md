@@ -114,6 +114,45 @@ const output = transliterate(input);
 console.log(output); // --> "badag"
 ```
 
+## Working with Substitution Rules
+
+The transliterate library already handles several tricky cases on your behalf. For example, say you have the following substitution rules, and want to use them on the string `abc`:
+
+Input | Output
+:----:|:-----:
+  a   |   b
+  b   |   c
+
+In this case, you probably intend the output to be `bcc`. But if you apply the `a → b` rule before the `b → c` rule, you get the output `ccc`. This is called a [<dfn>feeding problem</dfn>][feeding]. The transliterate library automatically avoids feeding problems, so that you get the expected result `bcc` rather than `ccc`.
+
+Now say that you want to apply the following rules to the string `abacad`.
+
+Input | Output
+:----:|:-----:
+  a   |   b
+ ac   |   d
+
+You probably intend the output to be `abdbd`. But if you apply the `a → b` rule before the `ac → d` rule, you get the output `bbbcbd`. This is called a [<dfn>bleeding problem</dfn>][bleeding]. The transliterate library automatically avoids bleeding problems as well, so that you get the expected result `abdbd` rather than `bbbcbd`.
+
+Here are some things to remember about how the transliterate library applies substitutions:
+
+* Longer substitutions are always made first. If you have substitution rules for both `ch` and `c`, the library will first substitute all instances of `ch` with its replacement, followed by all instances of `c`.
+
+* If two substitution inputs are the same length, the substitutions will be applied in the order they were passed to the library. For example, if you have the rules `ab → d` and `bc → e`, in that order, the `ab → d` substitutions will be applied first.
+
+Sometimes the way you want to transliterate a character or sequence of characters will depend on context. For example, you might want `a` to sometimes become `b`, and other times become `c`. In this case you have several options:
+
+* **Update the original text** to indicate the difference. For example, you might change all the `a`s that you want to become `c`s to `ɑ` or maybe `ac` or `aa` or `\a`, or whatever makes sense for your project.
+
+* **Update the substitution rules** to take more context into account. For example, if `a` becomes `b` before `c` and becomes `d` elsewhere, you could write your rules like this:
+
+  Input | Output
+  :----:|:-----:
+   ab   |   c
+    a   |   d
+
+* **Update both the original text and the subsitution rules.** For example, you could update the original text to indicate syllable boundaries, and then update your substitution rules to use those boundaries. For instance, the sequence `abc` could be syllabified as `a.bc` or `ab.c`. After updating the original text with syllable boundaries, you could change your rules to target syllable-initial vs. syllable-final `b`; for example: `.b → d` (syllable-initial) and `b. → e` (syllable-final).
+
 [bleeding]:       https://en.wikipedia.org/wiki/Bleeding_order
 [docs]:           https://developer.digitallinguistics.io/transliterate
 [feeding]:        https://en.wikipedia.org/wiki/Feeding_order
