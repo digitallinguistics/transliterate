@@ -93,37 +93,43 @@
 
 
     <section class="readme-section">
-        <article><h1><a href="https://github.com/digitallinguistics/transliterate">Transliterate</a></h1><p>A small JavaScript library for transliterating and/or sanitizing strings. Works on Node (LTS) or in the browser. Tested against a wide variety of edge cases and unusual inputs.</p>
-<p><a href="https://developer.digitallinguistics.io/transliterate">View the complete documentation for this library here.</a></p>
-<p><a href="https://www.npmjs.com/package/@digitallinguistics/transliterate"><img src="https://img.shields.io/npm/v/@digitallinguistics/transliterate.svg" alt="npm version"></a>
-<a href="https://www.npmjs.com/package/@digitallinguistics/transliterate"><img src="https://img.shields.io/npm/dt/@digitallinguistics/transliterate.svg" alt="npm downloads"></a>
-<a href="https://github.com/digitallinguistics/transliterate/issues"><img src="https://img.shields.io/github/issues-raw/digitallinguistics/transliterate.svg" alt="GitHub issues"></a>
-<a href="https://github.com/digitallinguistics/transliterate/blob/master/LICENSE.md"><img src="https://img.shields.io/npm/l/@digitallinguistics/transliterate.svg" alt="license"></a></p>
-<p><a href="https://doi.org/10.5281/zenodo.2550470"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.2550470.svg" alt="DOI"></a>
-<a href="https://github.com/digitallinguistics/transliterate"><img src="https://img.shields.io/github/stars/digitallinguistics/transliterate.svg?label=Stars&amp;style=social" alt="GitHub stars"></a>
-<a href="https://github.com/digitallinguistics/transliterate"><img src="https://img.shields.io/github/forks/digitallinguistics/transliterate.svg?label=Fork&amp;style=social" alt="GitHub forks"></a></p>
-<h2>Overview</h2><p>This library is useful for linguists and data analysts working with language data. It can be used to convert a string from one writing system to another (a process known as &quot;transliteration&quot;), or to remove unwanted characters or sequences of characters from a string (a process known as &quot;sanitization&quot;). This library handles common problems that arise during transliteration and sanitization, including <a href="https://en.wikipedia.org/wiki/Bleeding_order">bleeding</a> and <a href="https://en.wikipedia.org/wiki/Feeding_order">feeding</a> issues.</p>
-<h2>Demo</h2><p>Check out the <a href="https://tools.digitallinguistics.io/transliterator">Transliterator tool</a> to see this library in use.</p>
-<h2>Issues &amp; Feature Requests</h2><p><a href="https://github.com/digitallinguistics/transliterate/issues">Click here to open an issue or make a feature request.</a></p>
-<h2>Citation &amp; Attribution</h2><p>This library is maintained by <a href="https://danielhieber.com">Daniel W. Hieber</a>. To cite this library, please see the citation information on this repository's <a href="https://doi.org/10.5281/zenodo.2550470">Zenodo page</a>.</p>
-<h2>Installation</h2><p>Install with <strong>npm</strong> or <strong>yarn</strong>:</p>
-<pre class="prettyprint source lang-sh"><code>npm install @digitallinguistics/transliterate # npm
-yarn add @digitallinguistics/transliterate    # yarn</code></pre><p>Or link to the library using the DLx CDN. The library is available, versioned or unversioned, as ES modules or a UMD library, at the following URLs (where <code>X.X.X</code> represents the version number):</p>
+        <article><h1>Transliterate</h1>
+<p>A small JavaScript library for transliterating and/or sanitizing strings. Tested against a variety of edge cases and unusual inputs.</p>
+<p><a href="https://www.npmjs.com/package/@digitallinguistics/transliterate"><img src="https://img.shields.io/npm/dt/@digitallinguistics/transliterate" alt="npm"></a>
+<a href="https://github.com/digitallinguistics/transliterate/issues"><img src="https://img.shields.io/github/issues/digitallinguistics/transliterate" alt="GitHub issues"></a>
+<a href="https://doi.org/10.5281/zenodo.2550468"><img src="https://zenodo.org/badge/167235084.svg" alt="DOI"></a>
+<a href="https://github.com/digitallinguistics/transliterate/blob/master/LICENSE.md"><img src="https://img.shields.io/github/license/digitallinguistics/transliterate" alt="GitHub license"></a>
+<a href="https://github.com/digitallinguistics/transliterate/stargazers"><img src="https://img.shields.io/github/stars/digitallinguistics/transliterate?style=social" alt="GitHub stars"></a></p>
+<h2>Quick Links</h2>
 <ul>
-<li><code>https://cdn.digitallinguistics.io/scripts/transliterate.js</code> (latest, ES modules)</li>
-<li><code>https://cdn.digitallinguistics.io/scripts/transliterate-latest.js</code> (latest, ES modules)</li>
-<li><code>https://cdn.digitallinguistics.io/scripts/transliterate-X.X.X.js</code> (versioned, ES modules)</li>
-<li><code>https://cdn.digitallinguistics.io/scripts/transliterate.bundle.js</code> (latest, UMD)</li>
-<li><code>https://cdn.digitallinguistics.io/scripts/transliterate.bundle-latest.js</code> (latest, UMD)</li>
-<li><code>https://cdn.digitallinguistics.io/scripts/transliterate.bundle-X.X.X.js</code> (versioned, UMD)</li>
+<li><a href="https://developer.digitallinguistics.io/transliterate">View the complete documentation for this library here.</a></li>
+<li><a href="https://github.com/digitallinguistics/transliterate">View this library on GitHub.</a></li>
+<li><a href="https://github.com/digitallinguistics/transliterate/issues/new">Click here to open an issue or make a feature request.</a></li>
 </ul>
-<h2>Importing the Library</h2><p>In the browser, include the library in your HTML (adjust the <code>src</code> to point to the location of the <code>transliterate.js</code> file in your project):</p>
-<pre class="prettyprint source lang-html"><code>&lt;!-- Using ES6 modules -->
-&lt;script src=transliterate.js type=module>&lt;/script>
-
-&lt;!-- As a global variable -->
-&lt;script src=transliterate.bundle.js>&lt;/script></code></pre><p>In Node, simply require the library:</p>
-<pre class="prettyprint source lang-js"><code>const { transliterate } = require(`@digitallinguistics/transliterate`);</code></pre><h2>Basic Usage</h2><p>The <code>transliterate</code> library exports an object with four methods:</p>
+<h2>Overview</h2>
+<p>This library is useful for linguists and data analysts working with language data. It can be used to convert a string from one writing system to another (a process known as <dfn>transliteration</dfn>), or to remove unwanted characters or sequences of characters from a string (a process known as <dfn>sanitization</dfn>). This library handles common problems that arise during transliteration and sanitization, including <a href="https://en.wikipedia.org/wiki/Bleeding_order">bleeding</a> and <a href="https://en.wikipedia.org/wiki/Feeding_order">feeding</a> issues.</p>
+<h2>Demo</h2>
+<p>Check out the <a href="https://tools.digitallinguistics.io/transliterator">Transliterator tool</a> to see this library in use.</p>
+<h2>Citation &amp; Attribution</h2>
+<p>This library is maintained by <a href="https://danielhieber.com">Daniel W. Hieber</a>. You can cite this library with its DOI using the following model:</p>
+<blockquote>
+<p>Hieber, Daniel W. 2020. digitallinguistics/transliterate. doi:<a href="https://doi.org/10.5281/zenodo.2550468">10.5281/zenodo.2550468</a>.</p>
+</blockquote>
+<p>Each version of this library is archived on this project's <a href="https://doi.org/10.5281/zenodo.2550468">Zenodo page</a>.</p>
+<h2>Installation</h2>
+<p>Install with <strong>npm</strong> or <strong>yarn</strong>:</p>
+<pre class="prettyprint source lang-sh"><code>npm install @digitallinguistics/transliterate # npm
+yarn add @digitallinguistics/transliterate    # yarn
+</code></pre>
+<h2>Importing the Library</h2>
+<p>In the browser, include the library in your HTML (adjust the <code>src</code> to point to the location of the <code>transliterate.js</code> file in your project):</p>
+<pre class="prettyprint source lang-html"><code>&lt;script src=transliterate.js type=module>&lt;/script>
+</code></pre>
+<p>In Node, simply import the library:</p>
+<pre class="prettyprint source lang-js"><code>import { transliterate } from '@digitallinguistics/transliterate';
+</code></pre>
+<h2>Basic Usage</h2>
+<p>The <code>transliterate</code> library exports an object with four methods:</p>
 <ul>
 <li><code>transliterate</code></li>
 <li><code>Transliterator</code></li>
@@ -132,8 +138,8 @@ yarn add @digitallinguistics/transliterate    # yarn</code></pre><p>Or link to t
 </ul>
 <p>The <code>sanitize</code> and <code>Sanitizer</code> exports are essentially just aliases for <code>transliterate</code> and <code>Transliterator</code> respectively.</p>
 <p>To transliterate a string, use the <code>transliterate</code> method:</p>
-<pre class="prettyprint source lang-js"><code>// Import just the &quot;transliterate&quot; method from the library
-const { transliterate } = transliterate;
+<pre class="prettyprint source lang-js"><code>// Import the &quot;transliterate&quot; method from the library
+import { transliterate } from '@digitallinguistics/transliterate';
 
 // The list of substitutions to make
 const substitutions = {
@@ -148,9 +154,11 @@ const input = `patak`;
 // Transliterate the string
 const output = transliterate(input, substitutions);
 
-console.log(output); // --> &quot;badag&quot;</code></pre><p>To save a set of transliteration rules for reuse on more than one string, use the <code>Transliterator</code> class:</p>
-<pre class="prettyprint source lang-js"><code>// Import just the Transliterator class
-const { Transliterator } = transliterate;
+console.log(output); // --> &quot;badag&quot;
+</code></pre>
+<p>To save a set of transliteration rules for reuse on more than one string, use the <code>Transliterator</code> class:</p>
+<pre class="prettyprint source lang-js"><code>// Import the Transliterator class
+import { Transliterator } from '@digitallinguistics/transliterate';
 
 // The list of substitutions to use for transliteration
 const substitutions = {
@@ -169,7 +177,8 @@ const input = `patak`;
 // Transliterate the string
 const output = transliterate(input);
 
-console.log(output); // --> &quot;badag&quot;</code></pre><h2>Contributing</h2><p><a href="https://github.com/digitallinguistics/transliterate/blob/master/.github/CONTRIBUTING.md">Check out the Contributing Guide</a></p></article>
+console.log(output); // --> &quot;badag&quot;
+</code></pre></article>
     </section>
 
 
@@ -213,9 +222,9 @@ console.log(output); // --> &quot;badag&quot;</code></pre><h2>Contributing</h2><
 
 
 <span class="jsdoc-message">
-	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a>
+	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.4</a>
 	
-		on 2019-04-06T21:01:49-07:00
+		on 2020-07-02T19:17:05+00:00
 	
 	using the <a href="https://github.com/docstrap/docstrap">DocStrap template</a>.
 </span>
