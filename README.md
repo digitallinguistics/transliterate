@@ -28,7 +28,7 @@ Check out the [Transliterator tool][Transliterator] to see this library in use.
 
 This library is maintained by [Daniel W. Hieber][me]. You can cite this library with its DOI using the following model:
 
-> Hieber, Daniel W. 2020. digitallinguistics/transliterate. DOI: [10.5281/zenodo.2550468](https://doi.org/10.5281/zenodo.2550468).
+> Hieber, Daniel W. 2019. digitallinguistics/transliterate. DOI: [10.5281/zenodo.2550468](https://doi.org/10.5281/zenodo.2550468).
 
 Each version of this library is archived on this project's [Zenodo page][Zenodo].
 
