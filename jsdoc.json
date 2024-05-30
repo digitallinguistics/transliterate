@@ -2,8 +2,7 @@
   "opts": {
     "destination": "./docs/",
     "readme": "./README.md",
-    "recurse": true,
-    "template": "./node_modules/ink-docstrap/template"
+    "recurse": true
   },
   "plugins": [
     "plugins/markdown"
