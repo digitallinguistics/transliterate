@@ -28,7 +28,7 @@ Check out the [Transliterator tool][Transliterator] to see this library in use.
 
 This library is maintained by [Daniel W. Hieber][me]. You can cite this library with its DOI using the following model:
 
-> Hieber, Daniel W. 2020. digitallinguistics/transliterate. doi:[10.5281/zenodo.2550468](https://doi.org/10.5281/zenodo.2550468).
+> Hieber, Daniel W. 2020. digitallinguistics/transliterate. DOI: [10.5281/zenodo.2550468](https://doi.org/10.5281/zenodo.2550468).
 
 Each version of this library is archived on this project's [Zenodo page][Zenodo].
 
@@ -59,10 +59,10 @@ import { transliterate } from '@digitallinguistics/transliterate';
 
 The `transliterate` library exports an object with four methods:
 
-- `transliterate`
-- `Transliterator`
-- `sanitize`
-- `Sanitizer`
+* `transliterate`
+* `Transliterator`
+* `sanitize`
+* `Sanitizer`
 
 The `sanitize` and `Sanitizer` exports are essentially just aliases for `transliterate` and `Transliterator` respectively.
 
@@ -160,7 +160,7 @@ Sometimes the way you want to transliterate a character or sequence of character
 [issues]:         https://github.com/digitallinguistics/transliterate/issues
 [license]:        https://github.com/digitallinguistics/transliterate/blob/master/LICENSE.md
 [new-issue]:      https://github.com/digitallinguistics/transliterate/issues/new
-[me]:             https://danielhieber.com
+[me]:             https://github.com/dwhieb
 [npm]:            https://www.npmjs.com/package/@digitallinguistics/transliterate
 [releases]:       https://github.com/digitallinguistics/transliterate/releases
 [stargazers]:     https://github.com/digitallinguistics/transliterate/stargazers
