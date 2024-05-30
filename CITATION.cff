@@ -1,0 +1,19 @@
+authors:
+  - family-names: Hieber
+    given-names:  Daniel W.
+    orcid:        https://orcid.org/0000-0002-1411-3773
+    website:      https://github.com/dwhieb
+cff-version: 1.2.0
+doi:         10.5281/zenodo.2550468
+keywords:
+  - digital linguistics
+  - digital humanities
+  - linguistics
+  - orthography
+  - transliteration
+  - writing
+license:         MIT
+message:         If you use this software, please cite it using these metadata.
+repository-code: https://github.com/digitallinguistics/transliterate
+title:           DLx Transliterator
+url:             https://github.com/digitallinguistics/transliterate
