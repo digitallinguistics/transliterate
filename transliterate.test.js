@@ -1,69 +1,70 @@
-/* eslint-disable
-  func-names,
-  max-nested-callbacks,
-  prefer-arrow-callback,
-*/
+import { expect }        from 'chai'
+import path              from 'node:path'
+import { readFile }      from 'node:fs/promises'
+import { transliterate } from './transliterate.js'
 
-import { createRequire } from 'module';
-import expect            from 'expect.js';
-import { transliterate } from './transliterate.js';
+import { describe, it } from 'node:test'
 
-const require              = createRequire(import.meta.url);
-const blns                 = require(`./constants/blns.json`);
-const chatinoSubstitutions = require(`./constants/chatino.json`);
+const dataDir = path.resolve(import.meta.dirname, `./data`)
+
+const blnsJSON = await readFile(path.join(dataDir, `blns.json`))
+const blns     = JSON.parse(blnsJSON)
+
+const chatinoJSON = await readFile(path.join(dataDir, `chatino.json`))
+const chatino     = JSON.parse(chatinoJSON)
 
 describe(`transliterate`, function() {
 
   it(`accepts empty strings`, function() {
 
-    const substitutions = { t: `d` };
-    const output = transliterate(``, substitutions);
+    const substitutions = { t: `d` }
+    const output        = transliterate(``, substitutions)
 
-    expect(output).to.be.empty();
+    expect(output).to.be.empty
 
-  });
+  })
 
   it(`handles bleeding problems`, function() {
 
     const substitutions = {
       s:  `z`,
       ts: `c`,
-    };
+    }
 
-    const input         = `atsa`;
-    const correctOutput = `aca`;
-    const actualOutput  = transliterate(input, substitutions);
+    const input         = `atsa`
+    const correctOutput = `aca`
+    const actualOutput  = transliterate(input, substitutions)
 
-    expect(actualOutput).to.be(correctOutput);
+    expect(actualOutput).to.equal(correctOutput)
 
-  });
+  })
 
   it(`handles feeding problems`, function() {
 
     const substitutions = {
       d: `θ`,
       t: `d`,
-    };
+    }
 
-    const input         = `atada`;
-    const correctOutput = `adaθa`;
-    const actualOutput  = transliterate(input, substitutions);
+    const input         = `atada`
+    const correctOutput = `adaθa`
+    const actualOutput  = transliterate(input, substitutions)
 
-    expect(actualOutput).to.be(correctOutput);
+    expect(actualOutput).to.equal(correctOutput)
 
-  });
+  })
 
   it(`handles naughty strings`, function() {
 
-    const substitutions = { ʃ: `s` };
+    const substitutions = { ʃ: `s` }
 
-    blns.forEach(str => {
-      expect(transliterate(str, substitutions)).to.be(str);
-    });
+    for (const str of blns) {
+      expect(transliterate(str, substitutions)).to.equal(str)
+    }
 
-  });
+  })
 
-  it(`handles numbers as inputs`, () => {
+  it(`handles numbers as inputs`, function() {
 
     const substitutions = {
       0: `a`,
@@ -76,37 +77,37 @@ describe(`transliterate`, function() {
       7: `h`,
       8: `i`,
       9: `j`,
-    };
+    }
 
-    const input         = `0123456789`;
-    const correctOutput = `abcdefghij`;
-    const actualOutput  = transliterate(input, substitutions);
+    const input         = `0123456789`
+    const correctOutput = `abcdefghij`
+    const actualOutput  = transliterate(input, substitutions)
 
-    expect(actualOutput).to.be(correctOutput);
+    expect(actualOutput).to.equal(correctOutput)
 
-  });
+  })
 
-  it(`retains line breaks`, () => {
+  it(`retains line breaks`, function() {
 
-    const substitutions = {};
+    const substitutions = {}
 
     const input = `Hello world,
-    This is some multi-line input.\nThis is also multi-line.`;
+    This is some multi-line input.\nThis is also multi-line.`
 
-    const output = transliterate(input, substitutions);
+    const output = transliterate(input, substitutions)
 
-    expect(output).to.equal(input);
+    expect(output).to.equal(input)
 
-  });
+  })
 
-  it(`transliterates Chatino`, () => {
+  it(`transliterates Chatino`, function() {
 
-    const input         = `ji_& xiku_na!7a laa7 nka7nelo!7o_ na! nkata_a!`;
-    const correctOutput = `jï̱ xiku̱ná'a laa' nka'neló'o̱ ná nkata̱á`;
-    const actualOutput  = transliterate(input, chatinoSubstitutions);
+    const input         = `ji_& xiku_na!7a laa7 nka7nelo!7o_ na! nkata_a!`
+    const correctOutput = `jï̱ xiku̱ná'a laa' nka'neló'o̱ ná nkata̱á`
+    const actualOutput  = transliterate(input, chatino)
 
-    expect(actualOutput).to.be(correctOutput);
+    expect(actualOutput).to.equal(correctOutput)
 
-  });
+  })
 
-});
+})
