@@ -2,27 +2,19 @@
 
 A small JavaScript library for transliterating and/or sanitizing strings. Tested against a variety of edge cases and unusual inputs.
 
-[![npm](https://img.shields.io/npm/dt/@digitallinguistics/transliterate)][npm]
+![GitHub Release](https://img.shields.io/github/v/release/digitallinguistics/transliterate)
 [![GitHub issues](https://img.shields.io/github/issues/digitallinguistics/transliterate)][issues]
-[![GitHub release (latest by date)](https://img.shields.io/github/v/release/digitallinguistics/transliterate)][releases]
-[![GitHub status](https://github.com/digitallinguistics/transliterate/workflows/release/badge.svg)][status]
 [![DOI](https://zenodo.org/badge/167235084.svg)][Zenodo]
 [![GitHub license](https://img.shields.io/github/license/digitallinguistics/transliterate)][license]
 [![GitHub stars](https://img.shields.io/github/stars/digitallinguistics/transliterate?style=social)][stargazers]
 
-## Quick Links
-
-* [View the complete documentation for this library here.][docs]
-* [View this library on GitHub.][GitHub]
-* [Click here to open an issue or make a feature request.][new-issue]
-
 ## Overview
 
-This library is useful for linguists and data analysts working with language data. It can be used to convert a string from one writing system to another (a process known as <dfn>transliteration</dfn>), or to remove unwanted characters or sequences of characters from a string (a process known as <dfn>sanitization</dfn>). This library handles common problems that arise during transliteration and sanitization, including [bleeding][bleeding] and [feeding][feeding] issues.
+This library is useful for linguists and data analysts working with language data. It can be used to convert a string from one writing system to another (a process known as **transliteration**), or to remove unwanted characters or sequences of characters from a string (a process known as **sanitization**). This library handles common problems that arise during transliteration and sanitization, including [bleeding][bleeding] and [feeding][feeding] issues.
 
-## Demo
-
-Check out the [Transliterator tool][Transliterator] to see this library in use.
+- [Get answers to questions here.][discussions]
+- [Report a problem here.][new-issue]
+- [Request a change or feature here.][new-issue]
 
 ## Citation & Attribution
 
@@ -59,10 +51,10 @@ import { transliterate } from '@digitallinguistics/transliterate';
 
 The `transliterate` library exports an object with four methods:
 
-* `transliterate`
-* `Transliterator`
-* `sanitize`
-* `Sanitizer`
+- `transliterate`
+- `Transliterator`
+- `sanitize`
+- `Sanitizer`
 
 The `sanitize` and `Sanitizer` exports are essentially just aliases for `transliterate` and `Transliterator` respectively.
 
@@ -136,34 +128,29 @@ You probably intend the output to be `abdbd`. But if you apply the `a → b` rul
 
 Here are some things to remember about how the transliterate library applies substitutions:
 
-* Longer substitutions are always made first. If you have substitution rules for both `ch` and `c`, the library will first substitute all instances of `ch` with its replacement, followed by all instances of `c`.
+- Longer substitutions are always made first. If you have substitution rules for both `ch` and `c`, the library will first substitute all instances of `ch` with its replacement, followed by all instances of `c`.
 
-* If two substitution inputs are the same length, the substitutions will be applied in the order they were passed to the library. For example, if you have the rules `ab → d` and `bc → e`, in that order, the `ab → d` substitutions will be applied first.
+- If two substitution inputs are the same length, the substitutions will be applied in the order they were passed to the library. For example, if you have the rules `ab → d` and `bc → e`, in that order, the `ab → d` substitutions will be applied first.
 
 Sometimes the way you want to transliterate a character or sequence of characters will depend on context. For example, you might want `a` to sometimes become `b`, and other times become `c`. In this case you have several options:
 
-* **Update the original text** to indicate the difference. For example, you might change all the `a`s that you want to become `c`s to `ɑ` or maybe `ac` or `aa` or `\a`, or whatever makes sense for your project.
+- **Update the original text** to indicate the difference. For example, you might change all the `a`s that you want to become `c`s to `ɑ` or maybe `ac` or `aa` or `\a`, or whatever makes sense for your project.
 
-* **Update the substitution rules** to take more context into account. For example, if `a` becomes `b` before `c` and becomes `d` elsewhere, you could write your rules like this:
+- **Update the substitution rules** to take more context into account. For example, if `a` becomes `b` before `c` and becomes `d` elsewhere, you could write your rules like this:
 
   Input | Output
   :----:|:-----:
    ab   |   c
     a   |   d
 
-* **Update both the original text and the subsitution rules.** For example, you could update the original text to indicate syllable boundaries, and then update your substitution rules to use those boundaries. For instance, the sequence `abc` could be syllabified as `a.bc` or `ab.c`. After updating the original text with syllable boundaries, you could change your rules to target syllable-initial vs. syllable-final `b`; for example: `.b → d` (syllable-initial) and `b. → e` (syllable-final).
+- **Update both the original text and the subsitution rules.** For example, you could update the original text to indicate syllable boundaries, and then update your substitution rules to use those boundaries. For instance, the sequence `abc` could be syllabified as `a.bc` or `ab.c`. After updating the original text with syllable boundaries, you could change your rules to target syllable-initial vs. syllable-final `b`; for example: `.b → d` (syllable-initial) and `b. → e` (syllable-final).
 
 [bleeding]:       https://en.wikipedia.org/wiki/Bleeding_order
-[docs]:           https://developer.digitallinguistics.io/transliterate
+[discussions]:    https://github.com/orgs/digitallinguistics/discussions?discussions_q=is%3Aopen+label%3A%22%F0%9F%94%84+Transliterate%22
 [feeding]:        https://en.wikipedia.org/wiki/Feeding_order
-[GitHub]:         https://github.com/digitallinguistics/transliterate
 [issues]:         https://github.com/digitallinguistics/transliterate/issues
 [license]:        https://github.com/digitallinguistics/transliterate/blob/master/LICENSE.md
 [new-issue]:      https://github.com/digitallinguistics/transliterate/issues/new
 [me]:             https://github.com/dwhieb
-[npm]:            https://www.npmjs.com/package/@digitallinguistics/transliterate
-[releases]:       https://github.com/digitallinguistics/transliterate/releases
 [stargazers]:     https://github.com/digitallinguistics/transliterate/stargazers
-[status]:         https://github.com/digitallinguistics/transliterate/actions
-[Transliterator]: https://tools.digitallinguistics.io/transliterator
 [Zenodo]:         https://doi.org/10.5281/zenodo.2550468
