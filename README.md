@@ -15,6 +15,7 @@ This library is useful for linguists and data analysts working with language dat
 - [Get answers to questions here.][discussions]
 - [Report a problem here.][new-issue]
 - [Request a change or feature here.][new-issue]
+- [View the complete API for this library here.][API]
 
 ## Citation & Attribution
 
@@ -106,6 +107,8 @@ const output = transliterate(input);
 console.log(output); // --> "badag"
 ```
 
+**[View the entire API for this library here.][API]**
+
 ## Working with Substitution Rules
 
 The transliterate library already handles several tricky cases on your behalf. For example, say you have the following substitution rules, and want to use them on the string `abc`:
@@ -145,6 +148,7 @@ Sometimes the way you want to transliterate a character or sequence of character
 
 - **Update both the original text and the subsitution rules.** For example, you could update the original text to indicate syllable boundaries, and then update your substitution rules to use those boundaries. For instance, the sequence `abc` could be syllabified as `a.bc` or `ab.c`. After updating the original text with syllable boundaries, you could change your rules to target syllable-initial vs. syllable-final `b`; for example: `.b → d` (syllable-initial) and `b. → e` (syllable-final).
 
+[API]:            https://developer.digitallinguistics.io/transliterate
 [bleeding]:       https://en.wikipedia.org/wiki/Bleeding_order
 [discussions]:    https://github.com/orgs/digitallinguistics/discussions?discussions_q=is%3Aopen+label%3A%22%F0%9F%94%84+Transliterate%22
 [feeding]:        https://en.wikipedia.org/wiki/Feeding_order
