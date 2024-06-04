@@ -24,6 +24,22 @@ describe(`transliterate`, function() {
 
   })
 
+  it(`accepts Maps`, function() {
+
+    const substitutions = new Map([
+      [`a`, `aa`],
+      [`bc`, `cc`],
+      [`b`, `bb`],
+    ])
+
+    const input         = `abbc`
+    const correctOutput = `aabbcc`
+    const actualOutput  = transliterate(input, substitutions)
+
+    expect(actualOutput).to.be.equal(correctOutput)
+
+  })
+
   it(`handles bleeding problems`, function() {
 
     const substitutions = {

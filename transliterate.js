@@ -35,9 +35,9 @@ class Sanitizer {
 
 /**
  * Makes a series of substitutions on a string. Can be used to convert a string from one writing system to another (a process known as "transliteration") or to remove unwanted characters or sequences of characters from a string (a process known as "sanitization").
- * @param  {String} [string=``]          The string to transliterate or sanitize.
- * @param  {Object} [substitutions = {}] A hash of substitutions to make on the string. Each key in this object should be a string of characters you want to replace, and the value for that key should be the new string of characters to replace it with. For example, setting `"s": "z"` will replace all `s` characters with `z`. To sanitize a string, provide each unwanted character or sequence of characters as as a key, and set the value of that key to an empty string. For example, setting `"ts": ""` in this object will remove all sequences of `ts` from the string (but leave individual instances of `t` and `s` that do not appear in sequence).
- * @return {String}                      Returns a new string with all substitutions made.
+ * @param  {String} [string=``]               The string to transliterate or sanitize.
+ * @param  {Object} [substitutions = new Map] A hash of substitutions to make on the string. Each key in this object should be a string of characters you want to replace, and the value for that key should be the new string of characters to replace it with. For example, setting `"s": "z"` will replace all `s` characters with `z`. To sanitize a string, provide each unwanted character or sequence of characters as as a key, and set the value of that key to an empty string. For example, setting `"ts": ""` in this object will remove all sequences of `ts` from the string (but leave individual instances of `t` and `s` that do not appear in sequence).
+ * @return {String}                           Returns a new string with all substitutions made.
  * @example {@lang javascript}
  * const substitutions = {
  *   tʼ: `d`,
@@ -48,7 +48,7 @@ class Sanitizer {
  * const output = transliterate(input, substitutions);
  * console.log(output); // --> "cad"
  */
-function transliterate(string = ``, substitutions = {}) {
+function transliterate(string = ``, subs = new Map) {
 
   // Type Checking
 
@@ -56,67 +56,69 @@ function transliterate(string = ``, substitutions = {}) {
     throw new TypeError(`The first argument passed to the transliterate function must be a string.`)
   }
 
-  if (!(
-    typeof substitutions === `object`
-    && Object.values(substitutions).every(val => typeof val === `string`)
-  )) {
-    throw new TypeError(`The second argument passed to the transliterate function must be an object whose attributes and values are both strings.`)
+  if (!(subs instanceof Map || typeof subs === `object`)) {
+    throw new TypeError(`The substitutions object must be a Map or Object.`)
+  }
+
+  if (!(subs instanceof Map)) {
+    subs = new Map(Object.entries(subs))
+  }
+
+  const values = Array.from(subs.values())
+
+  if (!values.every(val => typeof val === `string`)) {
+    throw new TypeError(`Replacements must all be strings.`)
   }
 
   // Variables
 
-  const inputs = Object.keys(substitutions) // a list of the inputs
-  const subs   = new Map                    // holds the set of substitutions that need to be made
-  const temps  = new Map                    // tracks of any temporary placeholders
-  let str      = string                     // the string to manipulate
+  const temps = new Map  // Track of any temporary placeholders
+  let   str   = string   // The string to manipulate
 
   // Transliteration Steps
 
-  // get the list of substitutions
-  Object.entries(substitutions)
+  // Sort the substitutions by length of the input (avoids partial replacements)
+  subs = new Map(Array.from(subs.entries()).sort(([a], [b]) => b.length - a.length))
 
-  // sort the substitutions by length of the input (avoids partial replacements)
-    .sort(([a], [b]) => b.length - a.length)
+  // Make each substitution on the string, using temporary placeholders if needed
+  for (const [input, replacement] of subs) {
 
-  // make each substitution on the string, using temporary placeholders if needed
-    .forEach(([input, replacement]) => {
+    // Escape regexp special characters in the input
+    const escapedInput = input.replace(/[.*+?^${}()|[\]\\]/gu, `\\$&`)
 
-      // escape regexp special characters in the input
-      const escapedInput = input.replace(/[.*+?^${}()|[\]\\]/gu, `\\$&`)
+    // Add the escaped substitution to the set of substitutions to make
+    subs.set(escapedInput, replacement)
 
-      // add the escaped substitution to the set of substitutions to make
-      subs.set(escapedInput, replacement)
+    // Check for feeding problems, and create temporary placeholder substitutions if found
+    if (subs.get(replacement)) {
 
-      // check for feeding problems, and create temporary placeholder substitutions if found
-      if (inputs.includes(replacement)) {
+      // Get a random temporary placeholder to substitute
+      let temp = getRandomCodePoint()
 
-        // get a random temporary placeholder to substitute
-        let temp = getRandomCodePoint()
+      // Make sure you haven't already used that placeholder, and generate a new one if so
+      while (temps.has(temp)) temp = getRandomCodePoint()
 
-        // make sure you haven't already used that placeholder, and generate a new one if so
-        while (temps.has(temp)) temp = getRandomCodePoint()
+      // Add the placeholder to the set of temporary substitutions
+      temps.set(temp, replacement)
 
-        // add the placeholder to the set of temporary substitutions
-        temps.set(temp, replacement)
+      // Update the list of substitutions to use the temporary placeholder
+      subs.set(escapedInput, temp)
 
-        // update the list of substitutions to use the temporary placeholder
-        subs.set(escapedInput, temp)
+    }
 
-      }
+    // Make the substitution on the string, using the temporary placeholder if present
+    const regexp = new RegExp(escapedInput, `gu`)
+    str = str.replace(regexp, subs.get(escapedInput))
 
-      // make the substitution on the string, using the temporary placeholder if present
-      const regexp = new RegExp(escapedInput, `gu`)
-      str = str.replace(regexp, subs.get(escapedInput))
+  }
 
-    })
-
-  // replace the temporary placeholders with their original values
-  temps.forEach((replacement, temp) => {
+  // Replace the temporary placeholders with their original values
+  for (const [temp, replacement] of temps) {
     const regexp = new RegExp(temp, `gu`)
     str = str.replace(regexp, replacement)
-  })
+  }
 
-  // return the transliterated string
+  // Return the transliterated string
   return str
 
 }
