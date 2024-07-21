@@ -4,6 +4,15 @@
 */
 
 /**
+ * Escapes RegExp characters in a string.
+ * @param {String} input
+ * @returns {String}
+ */
+function escapeRegExp(input) {
+  return input.replace(/[.*+?^${}()|[\]\\]/gu, `\\$&`)
+}
+
+/**
  * Gets a random code point from the Unicode geometric shapes block
  * @private
  * @return {String} Returns the random Unicode character
@@ -83,11 +92,8 @@ function transliterate(string = ``, subs = new Map) {
   // Make each substitution on the string, using temporary placeholders if needed
   for (const [input, replacement] of subs) {
 
-    // Escape regexp special characters in the input
-    const escapedInput = input.replace(/[.*+?^${}()|[\]\\]/gu, `\\$&`)
-
     // Add the escaped substitution to the set of substitutions to make
-    subs.set(escapedInput, replacement)
+    subs.set(input, replacement)
 
     // Check for feeding problems, and create temporary placeholder substitutions if found
     if (subs.get(replacement)) {
@@ -102,13 +108,16 @@ function transliterate(string = ``, subs = new Map) {
       temps.set(temp, replacement)
 
       // Update the list of substitutions to use the temporary placeholder
-      subs.set(escapedInput, temp)
+      subs.set(input, temp)
 
     }
 
+    // Escape regexp special characters in the input
+    const escapedInput = escapeRegExp(input)
+
     // Make the substitution on the string, using the temporary placeholder if present
     const regexp = new RegExp(escapedInput, `gu`)
-    str = str.replace(regexp, subs.get(escapedInput))
+    str = str.replace(regexp, subs.get(input))
 
   }
 

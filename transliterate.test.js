@@ -103,6 +103,21 @@ describe(`transliterate`, function() {
 
   })
 
+  it(`handles regular expression special characters`, function() {
+
+    const substitutions = {
+      '*':  `·`,
+      'a*': `a·`,
+    }
+
+    const input         = `*ata*`
+    const correctOutput = `·ata·`
+    const actualOutput  = transliterate(input, substitutions)
+
+    expect(actualOutput).to.equal(correctOutput)
+
+  })
+
   it(`retains line breaks`, function() {
 
     const substitutions = {}
